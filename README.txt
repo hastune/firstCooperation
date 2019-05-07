@@ -1,28 +1,26 @@
-README
-当前文档编码UTF-8
-项目使用UTF-8编码
-
-项目描述：
-使用maven进行依赖管理
-技术：
-	jquery
-	bootstrap
-	font-awesome
-	html
-	css
-	ssm				主流web框架
-	mybatis plus	简化代码，逆向工程
-	lambok			简化代码
-	Druid			阿里数据库
-	springboot		分布式
-	redis			nosql
-	shiro			安全
-	elasticsearch	全文检索
-	fileupload		文件上传下载
-	
----------------------------------------------
-	以下用来进行项目进度的记录 功能的添加和删除均记录在下面，完成的功能在后面打钩(√)
-功能：
+###当前文档编码UTF-8
+###项目使用UTF-8编码
+---
+#项目描述：
+##使用maven进行依赖管理
+>* 技术如下：
+>* jquery
+>* bootstrap
+>* font-awesome
+>* html
+>* css
+>* ssm				主流web框架
+>* mybatis plus	简化代码，逆向工程
+>* lambok			简化代码
+>* Druid			阿里数据库
+>* springboot		分布式
+>* redis			nosql
+>* shiro			安全
+>* elasticsearch	全文检索
+>*fileupload		文件上传下载
+---	
+#以下用来进行项目进度的记录 功能的添加和删除均记录在下面，完成的功能在后面打钩(√)
+##功能：
 	1.登录
 		登录时校验用户名和密码是否正确，
 		登录后把user放在session
