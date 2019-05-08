@@ -39,6 +39,6 @@
     <!-- 注释掉，开发有需要自行放开-->
     <logger name="org.apache.ibatis" level="debug"/>
     <logger name="org.mybatis" level="debug"/>
-    <logger name="com.oyzj.blog.dao" level="debug"/>
+    <logger name="com.firstCooperation.blog.dao" level="debug"/>
 
 </configuration>
