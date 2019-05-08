@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruibo.icms.common.modules.dao.UserinfoMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ruibo.icms.common.modules.domain.Userinfo">
+		<id column="user_id" property="userId"/>
+		<result column="head_img" property="headImg"/>
+		<result column="about" property="about"/>
+		<result column="address" property="address"/>
+		<result column="sex" property="sex"/>
+		<result column="hobby" property="hobby"/>
+		<result column="qq" property="qq"/>
+		<result column="wechat" property="wechat"/>
+		<result column="weibo" property="weibo"/>
+		<result column="phone" property="phone"/>
+	</resultMap>
+
+</mapper>
