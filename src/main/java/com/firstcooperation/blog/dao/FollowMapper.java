@@ -1,6 +1,6 @@
 package com.firstcooperation.blog.dao;
 
-import com.ruibo.icms.common.modules.domain.Follow;
+import com.firstcooperation.blog.entity.Follow;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

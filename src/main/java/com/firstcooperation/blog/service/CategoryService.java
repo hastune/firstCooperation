@@ -1,6 +1,6 @@
 package com.firstcooperation.blog.service;
 
-import com.ruibo.icms.common.modules.domain.Category;
+import com.firstcooperation.blog.entity.Category;
 import com.baomidou.mybatisplus.service.IService;
 
 /**

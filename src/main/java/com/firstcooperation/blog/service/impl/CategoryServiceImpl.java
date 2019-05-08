@@ -1,8 +1,8 @@
 package com.firstcooperation.blog.service.impl;
 
-import com.ruibo.icms.common.modules.domain.Category;
-import com.ruibo.icms.common.modules.dao.CategoryMapper;
-import com.ruibo.icms.common.modules.service.CategoryService;
+import com.firstcooperation.blog.dao.CategoryMapper;
+import com.firstcooperation.blog.entity.Category;
+import com.firstcooperation.blog.service.CategoryService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,7 @@
 package com.firstcooperation.blog.service.impl;
 
-import com.ruibo.icms.common.modules.domain.Article;
-import com.ruibo.icms.common.modules.dao.ArticleMapper;
-import com.ruibo.icms.common.modules.service.ArticleService;
+import com.firstcooperation.blog.entity.Article;
+import com.firstcooperation.blog.service.ArticleService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

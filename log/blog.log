@@ -1,0 +1,33 @@
+734  [INFO ] 2019-05-08 11:38:36 [restartedMain] c.f.blog.BlogApplication - Starting BlogApplication on DESKTOP-87CTP83 with PID 9168 (C:\Users\rb\IdeaProjects\blog\target\classes started by rb in C:\Users\rb\IdeaProjects\blog)
+734  [INFO ] 2019-05-08 11:38:36 [restartedMain] c.f.blog.BlogApplication - No active profile set, falling back to default profiles: default
+765  [INFO ] 2019-05-08 11:38:36 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+765  [INFO ] 2019-05-08 11:38:36 [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+1343 [DEBUG] 2019-05-08 11:38:37 [restartedMain] org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+1343 [WARN ] 2019-05-08 11:38:37 [restartedMain] o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.firstcooperation.blog]' package. Please check your configuration.
+1343 [DEBUG] 2019-05-08 11:38:37 [restartedMain] o.m.s.b.a.MybatisAutoConfiguration - Searching for mappers annotated with @Mapper
+1343 [DEBUG] 2019-05-08 11:38:37 [restartedMain] o.m.s.b.a.MybatisAutoConfiguration - Using auto-configuration base package 'com.firstcooperation.blog'
+1359 [WARN ] 2019-05-08 11:38:37 [restartedMain] o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.firstcooperation.blog]' package. Please check your configuration.
+1390 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+1390 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+1406 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16ms. Found 0 repository interfaces.
+1624 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$fc7a18c2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+1656 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+1656 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$57e253c3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2015 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2015 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2030 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2030 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2124 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2124 [INFO ] 2019-05-08 11:38:37 [restartedMain] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1359 ms
+2359 [INFO ] 2019-05-08 11:38:38 [restartedMain] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2421 [INFO ] 2019-05-08 11:38:38 [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2452 [INFO ] 2019-05-08 11:38:38 [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2515 [INFO ] 2019-05-08 11:38:38 [restartedMain] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2593 [DEBUG] 2019-05-08 11:38:38 [restartedMain] org.apache.ibatis.io.VFS - Using VFS adapter com.baomidou.mybatisplus.spring.boot.starter.SpringBootVFS
+2593 [DEBUG] 2019-05-08 11:38:38 [restartedMain] o.m.spring.SqlSessionFactoryBean - Scanned package: 'com.firstCooperation.blog.entity' for aliases
+2983 [DEBUG] 2019-05-08 11:38:38 [restartedMain] o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was not specified or no matching resources found
+2983 [DEBUG] 2019-05-08 11:38:38 [restartedMain] o.m.s.b.a.MybatisAutoConfiguration - No org.mybatis.spring.mapper.MapperFactoryBean found.
+3530 [INFO ] 2019-05-08 11:38:39 [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+3546 [INFO ] 2019-05-08 11:38:39 [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+3561 [INFO ] 2019-05-08 11:38:39 [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+3561 [INFO ] 2019-05-08 11:38:39 [restartedMain] c.f.blog.BlogApplication - Started BlogApplication in 3.202 seconds (JVM running for 3.97)

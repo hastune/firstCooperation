@@ -1,7 +1,8 @@
 package com.firstcooperation.blog.service;
 
-import com.ruibo.icms.common.modules.domain.Follow;
+
 import com.baomidou.mybatisplus.service.IService;
+import com.firstcooperation.blog.entity.Follow;
 
 /**
  *  服务类

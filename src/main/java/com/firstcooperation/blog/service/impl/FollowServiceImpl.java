@@ -1,8 +1,8 @@
 package com.firstcooperation.blog.service.impl;
 
-import com.ruibo.icms.common.modules.domain.Follow;
-import com.ruibo.icms.common.modules.dao.FollowMapper;
-import com.ruibo.icms.common.modules.service.FollowService;
+import com.firstcooperation.blog.dao.FollowMapper;
+import com.firstcooperation.blog.entity.Follow;
+import com.firstcooperation.blog.service.FollowService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

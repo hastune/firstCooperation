@@ -1,8 +1,8 @@
 package com.firstcooperation.blog.service.impl;
 
-import com.ruibo.icms.common.modules.domain.Message;
-import com.ruibo.icms.common.modules.dao.MessageMapper;
-import com.ruibo.icms.common.modules.service.MessageService;
+import com.firstcooperation.blog.dao.MessageMapper;
+import com.firstcooperation.blog.entity.Message;
+import com.firstcooperation.blog.service.MessageService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

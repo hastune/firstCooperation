@@ -1,8 +1,8 @@
 package com.firstcooperation.blog.service.impl;
 
-import com.ruibo.icms.common.modules.domain.User;
-import com.ruibo.icms.common.modules.dao.UserMapper;
-import com.ruibo.icms.common.modules.service.UserService;
+import com.firstcooperation.blog.dao.UserMapper;
+import com.firstcooperation.blog.entity.User;
+import com.firstcooperation.blog.service.UserService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
