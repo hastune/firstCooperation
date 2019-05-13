@@ -35,4 +35,13 @@ public class Response {
         this.data = data;
         return this;
     }
+
+    public Response setCode(StatusCode statusCode){
+        this.code = statusCode;
+        return this;
+    }
+
+    public StatusCode getCode(){
+        return code;
+    }
 }

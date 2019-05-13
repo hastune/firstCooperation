@@ -15,4 +15,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserinfoServiceImpl extends ServiceImpl<UserinfoMapper, Userinfo> implements UserinfoService {
 
+
 }
