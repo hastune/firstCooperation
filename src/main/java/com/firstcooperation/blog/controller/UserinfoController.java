@@ -55,6 +55,13 @@ public class UserinfoController {
         return response;
     }
 
+    /**
+     * 文件的上传
+     * @param file 上传的文件
+     * @param source 保存的分类名
+     * @param httpSession
+     * @return
+     */
     @RequestMapping("/imgFileUpload")
     public Response imgUload(MultipartFile file, String source, HttpSession httpSession){
         Response response = new Response();
