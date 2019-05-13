@@ -4,16 +4,19 @@ package com.firstcooperation.blog.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.firstcooperation.blog.entity.User;
 import com.firstcooperation.blog.entity.Userinfo;
+import com.firstcooperation.blog.service.EmailService;
 import com.firstcooperation.blog.service.UserService;
 import com.firstcooperation.blog.service.UserinfoService;
 import com.firstcooperation.blog.utils.Response;
 import com.firstcooperation.blog.utils.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.concurrent.TimeUnit;
 
 /**
  *  控制器
@@ -27,6 +30,13 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    //加入邮箱服务
+    @Autowired
+    private EmailService emailService;
+    //加入redis模版
+    @Autowired
+    private RedisTemplate<String,String> redisTemplate;
 
     @Autowired
     private UserinfoService userinfoService;
@@ -70,5 +80,48 @@ public class UserController {
         }
         return response;
     }
+
+    @RequestMapping("/getCheckCode")
+    public Response getCheckCode(String email){
+        Response response = new Response();
+        //校验下邮箱
+        User user = userService.selectOne(new EntityWrapper<User>().eq("email",email));
+        if(user == null) {
+
+            //前台已经传来了email
+            //生成6位数
+            String checkCode = (int) ((Math.random() * 9 + 1) * 100000) + "";
+            String codeMessage = "尊敬的用户您好，您的注册验证码为：" + checkCode;
+
+            emailService.sendEmail(email, "注册验证码", codeMessage);
+
+            //将验证码传入到redis
+            //1小时失效
+            redisTemplate.opsForValue().set("checkCode", checkCode, 60 * 60, TimeUnit.SECONDS);
+
+            response.setMessage("验证码已发送");
+
+        }else{
+            //说明邮箱已经注册了,提示用户重新输入邮箱
+            response.setMessage("邮箱已存在，请重新输入！");
+        }
+
+        return response;
+    }
+
+    @RequestMapping("eqCheckCode")
+    public Response eqCheckCode(String code){
+        Response response = new Response();
+        //从redis从取出进行比对
+        String eqCode = redisTemplate.opsForValue().get("checkCode");
+        if(code.equals(eqCode)){
+            response.setMessage("SUCCESS");
+        }else {
+            response.setMessage("校验码输入错误");
+        }
+
+        return response;
+    }
+
 }
 
