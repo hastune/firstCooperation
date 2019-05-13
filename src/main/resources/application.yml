@@ -39,6 +39,48 @@ spring:
       #单个请求的最大值
       max-request-size: 2048000
 
+  #配置mail的相关参数
+  mail:
+    #默认编码格式
+    default-encoding: UTF-8
+    #传输协议
+    host: smtp.qq.com
+    #发送者的邮箱
+    username: z627490280@qq.com
+    #授权码
+    password: hiyrmeiueakybfci
+    #相关参数
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+  #配置redis的相关参数
+  redis:
+    #主机地址
+    host: localhost
+    #端口号
+    port: 6379
+    #redis连接密码，（默认为空）
+    password:
+    #连接池最大连接数
+    jedis:
+      pool:
+        #最大活跃连接数
+        max-active: 200
+        #-1表示没有限制
+        max-wait: -1
+        #最大空闲连接数
+        max-idle: 50
+        #最小空闲连接
+        min-idle: 0
+    #连接超时
+    timeout: 3000
+
+
 #mybatis
 mybatis-plus:
   mapper-locations: classpath:mybatis/mapper/*.xml

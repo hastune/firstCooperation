@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruibo.icms.common.modules.dao.UserMapper">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstcooperation.blog.dao.UserMapper" >
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.ruibo.icms.common.modules.domain.User">
-		<id column="user_id" property="userId"/>
-		<result column="nick_name" property="nickName"/>
-		<result column="email" property="email"/>
-		<result column="password" property="password"/>
-	</resultMap>
+	<resultMap id="BaseResultMap" type="com.firstcooperation.blog.entity.User" >
+		<id column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
 
+	</resultMap>
 </mapper>

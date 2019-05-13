@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruibo.icms.common.modules.dao.MessageMapper">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstcooperation.blog.dao.MessageMapper" >
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.ruibo.icms.common.modules.domain.Message">
-		<result column="message_id" property="messageId"/>
-		<result column="user_id" property="userId"/>
-		<result column="article_id" property="articleId"/>
-		<result column="message" property="message"/>
-		<result column="message_time" property="messageTime"/>
+	<resultMap id="BaseResultMap" type="com.firstcooperation.blog.entity.Message" >
+		<result column="message_id" property="messageId" jdbcType="VARCHAR" />
+		<result column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="article_id" property="articleId" jdbcType="VARCHAR" />
+		<result column="message" property="message" jdbcType="VARCHAR" />
+		<result column="message_time" property="messageTime" jdbcType="TIMESTAMP" />
 	</resultMap>
 
 </mapper>

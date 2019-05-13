@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruibo.icms.common.modules.dao.ArticleMapper">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstcooperation.blog.dao.ArticleMapper" >
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.ruibo.icms.common.modules.domain.Article">
-		<id column="article_id" property="articleId"/>
-		<result column="title" property="title"/>
-		<result column="context" property="context"/>
-		<result column="create_time" property="createTime"/>
-		<result column="view_count" property="viewCount"/>
-		<result column="user_id" property="userId"/>
-		<result column="category_id" property="categoryId"/>
+	<resultMap id="BaseResultMap" type="com.firstcooperation.blog.entity.Article" >
+		<id column="article_id" property="articleId" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="view_count" property="viewCount" jdbcType="BIGINT" />
+		<result column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="category_id" property="categoryId" jdbcType="VARCHAR" />
 	</resultMap>
+
 
 </mapper>

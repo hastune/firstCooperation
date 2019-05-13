@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruibo.icms.common.modules.dao.FollowMapper">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstcooperation.blog.dao.FollowMapper" >
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.ruibo.icms.common.modules.domain.Follow">
-		<id column="follow_id" property="followId"/>
-		<result column="follows_id" property="followsId"/>
-		<result column="follow_time" property="followTime"/>
+	<resultMap id="BaseResultMap" type="com.firstcooperation.blog.entity.Follow" >
+		<id column="follow_id" property="followId" jdbcType="VARCHAR" />
+		<result column="follows_id" property="followsId" jdbcType="VARCHAR" />
+		<result column="follow_time" property="followTime" jdbcType="TIMESTAMP" />
 	</resultMap>
 
 </mapper>
