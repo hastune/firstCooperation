@@ -20,7 +20,7 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    // 用户的ID（UUID）
+    // 用户的ID
     @TableId("user_id")
 	private String userId;
     // 用户的昵称
