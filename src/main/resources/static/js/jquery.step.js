@@ -25,11 +25,11 @@
            url : "/user/eqCheckCode?code="+code,
            type : "get",
            success : function (data) {
-              if("SUCCESS" == data){
+              if("SUCCESS" == data.message){
                   var yes=step.nextStep();
                   return;
               }else{
-                  Tip(data);
+                  Tip(data.message);
                   $("#Verification").focus();
                   return;
               }
@@ -58,6 +58,11 @@
 		      return;
 
 	            }
+	          if($.trim(txtPwd).length >16 && $.trim(txtPwd).length<6){
+	              Tips('密码长度为6-16位！');
+	              $("#txtPwd").focus();
+	              return;
+              }
 			  if($.trim(txtconfirm) == "") {
 
 	         	Tips('请再次输入密码！');

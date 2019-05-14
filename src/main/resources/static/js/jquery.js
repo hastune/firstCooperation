@@ -66,31 +66,34 @@ function Sendpwd(sender) {
             url : "/user/getCheckCode?email="+emails,
             type : "get",
             success : function (data) {
-            	if(data == "邮箱已存在，请重新输入！"){
-            		Tips(data);
+            	console.info(data);
+            	if(data.message == "邮箱已存在，请重新输入！"){
+            		Tip(data.message);
             		$("#email").focus();
             		return;
+				}else{
+					code.addClass("msgs1").attr("disabled",true);
+					var t=setInterval(function  () {
+						time--;
+						code.val(time+"秒");
+						if (time==0) {
+							clearInterval(t);
+							code.val("重新获取");
+							//发送请求
+							validCode=true;
+							code.removeClass("msgs1").attr("disabled",false);
+
+						}
+					},1000);
+
 				}
             }
 
         });
 
 
-			code.addClass("msgs1").attr("disabled",true);
-        var t=setInterval(function  () {
-            time--;
-            code.val(time+"秒");
-            if (time==0) {
-                clearInterval(t);
-                code.val("重新获取");
-                //发送请求
-                validCode=true;
-                code.removeClass("msgs1").attr("disabled",false);
+	}
 
-            }
-        },1000);
-    }
-    var code=$(sender);
 
 }
 

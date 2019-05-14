@@ -73,6 +73,9 @@ public class UserController {
     @RequestMapping("insertOneRow")
     public Response insertOneRow(User user){
         Response response = new Response();
+        //将email封装进user
+        String email = redisTemplate.opsForValue().get("email");
+        user.setEmail(email);
         if(!this.userService.insert(user)){
             //注册失败
             response.setMessage("未知问题请联系管理员")
@@ -81,7 +84,12 @@ public class UserController {
         return response;
     }
 
-    @RequestMapping("/getCheckCode")
+    /**
+     * email是前台获得的参数，进行邮箱注册，得到校验码
+     * @param email
+     * @return
+     */
+    @RequestMapping("getCheckCode")
     public Response getCheckCode(String email){
         Response response = new Response();
         //校验下邮箱
@@ -98,26 +106,35 @@ public class UserController {
             //将验证码传入到redis
             //1小时失效
             redisTemplate.opsForValue().set("checkCode", checkCode, 60 * 60, TimeUnit.SECONDS);
-
+            //如果redis存入验证码成功，我们就把email存入到session或者redis
+            redisTemplate.opsForValue().set("email", email, 60 * 60, TimeUnit.SECONDS);
             response.setMessage("验证码已发送");
 
         }else{
             //说明邮箱已经注册了,提示用户重新输入邮箱
-            response.setMessage("邮箱已存在，请重新输入！");
+            response.setMessage("邮箱已存在，请重新输入！")
+                                .setCode(StatusCode.VerifyCode_Send_Fail);
         }
 
         return response;
     }
 
+    /**
+     * 前台输入了校验码，后台取出redis的数据进行比对，
+     * @param code
+     * @return
+     */
     @RequestMapping("eqCheckCode")
     public Response eqCheckCode(String code){
         Response response = new Response();
+
         //从redis从取出进行比对
         String eqCode = redisTemplate.opsForValue().get("checkCode");
         if(code.equals(eqCode)){
             response.setMessage("SUCCESS");
         }else {
-            response.setMessage("校验码输入错误");
+            response.setMessage("校验码输入错误")
+                                .setCode(StatusCode.Invalid_VerifyCode);
         }
 
         return response;
