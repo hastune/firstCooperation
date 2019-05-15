@@ -23,7 +23,7 @@
   	<canvas id="demo-canvas" width="1590" height="711"></canvas>
   	<div class="Retrieve_style">
   	  <div class="Retrieve-content step-body" id="myStep">
-  		<h1 class="title_name">用户注册</h1>
+  		<h1 class="title_name">忘记密码</h1>
   		<div class="step-header"> <ul><li><p>输入邮箱</p></li><li><p>基本信息</p></li><li><p>成功</p></li></ul></div>
  		  <div class="step-content">
   			<div class="step-list login_padding">
@@ -33,7 +33,7 @@
 						<div class="input-group-addon"><i class="icon_phone"></i></div>
                         <input type="text" class="form-control text-email" name="email" id="email" placeholder="您的邮箱号" autocomplete="off" >
 					</div>
-                        <div class="col-lg-4 col-md-4 col-xs-4 fl"><input type="button" id="btn" class="btn_mfyzm" value="获取验证码" onclick="Sendpwd(this);"/></div>
+                        <div class="col-lg-4 col-md-4 col-xs-4 fl"><input type="button" id="btn" class="btn_mfyzm" value="获取验证码" onclick="ForgotSendpwd(this);"/></div>
 				</div>
 				<div class="form-group clearfix">
 				 <div class="input-group">
@@ -50,15 +50,7 @@
 			</div>
 			<div class="step-list">
 				<form method="post" role="form" id="" class="login_padding">
-					<div class="form-group clearfix">
-						<div class="input-group">
-							<div class="input-group-addon">
-								<i class="icon_user"></i>
-							</div>
-							<input type="text" class="form-control" name="nickName" id="nickName" placeholder="用户昵称" autocomplete="off">
-						</div>
 
-					</div>
 				  <div class="form-group clearfix">
 					<div class="input-group">
 						<div class="input-group-addon">
@@ -85,9 +77,8 @@
 					<div class="step-list">
 					<div class="ok_style center">
                             <h2><img src="images/ok.png"></h2>
-	                        <h5 class="color2 mtb20">你已成功注册会员<b id="sec">5</b>秒后跳转到登录页面</h5>
+	                        <h5 class="color2 mtb20">你已成功更改密码<b id="sec">5</b>秒后跳转到登录页面</h5>
 	                        <a href="login.html" class="btn btn-danger">登录</a>
-	                        <a href="registered.html" class="btn btn-primary">重新注册</a>
 					</div>
 				</div>
 			</div>

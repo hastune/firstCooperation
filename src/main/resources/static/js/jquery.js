@@ -37,15 +37,97 @@ function cliLogin() {
 		$("#Userpwd").focus();
 		return;
 	}
-	
+
+
+	//完成登录操作
+    $.ajax({
+       url : "/user/selectOne" ,
+       type : "POST",
+       data : {
+           email : txtUser,
+           password : txtPwd
+       },
+       dataType : "json",
+        success : function (data) {
+            if(data.message == "邮箱或密码错误"){
+                //説明账号或密码输入错误
+                Tip(data.message);
+                $("#email").focus();
+                return;
+            }else{
+                //登录成功
+                window.location.href = "http://www.baidu.com";
+            }
+        }
+    });
+
+
+
+
+
 	return false;
 }
+
+//忘记密码操作
+function ForgotSendpwd(sender){
+    var email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var emails = $.trim($("#email").val());
+    var code=$(sender);
+
+    if ($.trim(email) == "") {
+        Tip('请填写邮箱号！');
+        $("#emails").focus();
+        return;
+    }
+    if(!email.exec(emails)){
+
+        Tip('邮箱输入格式不正确,请重新输入');
+        $("#emails").focus();
+        return;
+    }
+
+    if (validCode ){
+        validCode = false;
+        code.addClass("msgs1").attr("disabled",true);
+        //在这里发送ajax请求
+        $.ajax({
+            url : "/user/getUserByEmail?email="+emails,
+            type : "get",
+            success : function (data) {
+
+                /*if(data.message == "邮箱已存在，请重新输入！") {
+                    Tip(data.message);
+                    $("#email").focus();
+                    validCode=true;
+                    code.removeClass("msgs1").attr("disabled",false);
+                    return;
+
+                }else{
+                    //如果输入正确，我们就发送请求
+
+                    code.val("重新获取");
+
+                    validCode=true;
+                    code.removeClass("msgs1").attr("disabled",false);
+
+                }*/
+            }
+
+
+        });
+    }
+
+}
+
+
 //注册操作
 
 function Sendpwd(sender) {
-	var time=60;
+
 	var email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	var emails = $.trim($("#email").val());
+    var code=$(sender);
+
 	if ($.trim(email) == "") {
 		Tip('请填写邮箱号！');
 		$("#emails").focus();
@@ -57,42 +139,38 @@ function Sendpwd(sender) {
 		$("#emails").focus();
 		return;
 	}
-    var code=$(sender);
-    if (validCode) {
-        validCode=false;
 
-        //在这里发送ajax请求
-        $.ajax({
-            url : "/user/getCheckCode?email="+emails,
-            type : "get",
-            success : function (data) {
-            	console.info(data);
-            	if(data.message == "邮箱已存在，请重新输入！"){
-            		Tip(data.message);
-            		$("#email").focus();
-            		return;
+	if (validCode ){
+		validCode = false;
+        code.addClass("msgs1").attr("disabled",true);
+		//在这里发送ajax请求
+		$.ajax({
+			url : "/user/getCheckCode?email="+emails,
+			type : "get",
+			success : function (data) {
+
+				if(data.message == "邮箱已存在，请重新输入！") {
+					Tip(data.message);
+					$("#email").focus();
+                    validCode=true;
+                    code.removeClass("msgs1").attr("disabled",false);
+					return;
+
 				}else{
-					code.addClass("msgs1").attr("disabled",true);
-					var t=setInterval(function  () {
-						time--;
-						code.val(time+"秒");
-						if (time==0) {
-							clearInterval(t);
-							code.val("重新获取");
-							//发送请求
-							validCode=true;
-							code.removeClass("msgs1").attr("disabled",false);
+					//如果输入正确，我们就发送请求
 
-						}
-					},1000);
+					code.val("重新获取");
 
+					validCode=true;
+					code.removeClass("msgs1").attr("disabled",false);
+
+					}
 				}
-            }
-
-        });
 
 
+		});
 	}
+
 
 
 }

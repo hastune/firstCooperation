@@ -58,7 +58,8 @@
 		      return;
 
 	            }
-	          if($.trim(txtPwd).length >16 && $.trim(txtPwd).length<6){
+            var reg = /^[\w]{6,12}$/;
+	          if(!reg.exec(txtPwd)){
 	              Tips('密码长度为6-16位！');
 	              $("#txtPwd").focus();
 	              return;
