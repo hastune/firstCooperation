@@ -7,6 +7,7 @@ import com.firstcooperation.blog.entity.Userinfo;
 import com.firstcooperation.blog.service.EmailService;
 import com.firstcooperation.blog.service.UserService;
 import com.firstcooperation.blog.service.UserinfoService;
+import com.firstcooperation.blog.utils.MD5Util;
 import com.firstcooperation.blog.utils.Response;
 import com.firstcooperation.blog.utils.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -51,13 +53,16 @@ public class UserController {
     @RequestMapping("selectOne")
     public Response selectOne(String email, String password, HttpSession httpSession){
         Response response = new Response();
-        User user =this.userService.selectOne(new EntityWrapper<User>().eq("email",email).and().eq("password",password));
+
+        //把输入密码进行加密与数据库进行比对
+        String mdPass = MD5Util.encode(password);
+        User user =this.userService.selectOne(new EntityWrapper<User>().eq("email",email).and().eq("password",mdPass));
         if(user != null){
             //登录成功
             //信息保存到session中
             httpSession.setAttribute("user",user);
-            //创建userinfo表数据 默认为空
-            this.userinfoService.insert(new Userinfo());
+           /* //创建userinfo表数据 默认为空
+            this.userinfoService.insert(new Userinfo());*/
         }else{
             response.setMessage("邮箱或密码错误")
                     .setCode(StatusCode.Fail_Code);
@@ -76,6 +81,12 @@ public class UserController {
         //将email封装进user
         String email = redisTemplate.opsForValue().get("email");
         user.setEmail(email);
+        //实现MD5加密
+       String password =  MD5Util.encode(user.getPassword());
+
+        System.out.println(password);
+       user.setPassword(password);
+
         if(!this.userService.insert(user)){
             //注册失败
             response.setMessage("未知问题请联系管理员")
@@ -92,14 +103,15 @@ public class UserController {
     @RequestMapping("getCheckCode")
     public Response getCheckCode(String email){
         Response response = new Response();
-        //校验下邮箱
         User user = userService.selectOne(new EntityWrapper<User>().eq("email",email));
         if(user == null) {
-
             //前台已经传来了email
             //生成6位数
             String checkCode = (int) ((Math.random() * 9 + 1) * 100000) + "";
-            String codeMessage = "尊敬的用户您好，您的注册验证码为：" + checkCode;
+            String codeMessage = "尊敬的用户您好!" +
+                    "\n您的注册验证码为：" + checkCode+"。" +
+                    "\n本验证码在1小时内有效，请于1小时内完成注册操作！"+
+                    "\n 发送人：lureSky工作组";
 
             emailService.sendEmail(email, "注册验证码", codeMessage);
 
@@ -109,15 +121,17 @@ public class UserController {
             //如果redis存入验证码成功，我们就把email存入到session或者redis
             redisTemplate.opsForValue().set("email", email, 60 * 60, TimeUnit.SECONDS);
             response.setMessage("验证码已发送");
-
-        }else{
+        }
+        else {
             //说明邮箱已经注册了,提示用户重新输入邮箱
             response.setMessage("邮箱已存在，请重新输入！")
-                                .setCode(StatusCode.VerifyCode_Send_Fail);
+                    .setCode(StatusCode.VerifyCode_Send_Fail);
         }
 
         return response;
     }
+
+
 
     /**
      * 前台输入了校验码，后台取出redis的数据进行比对，
