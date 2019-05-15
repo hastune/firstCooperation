@@ -40,6 +40,75 @@
 
 
 		});
+
+		//忘记密码的按钮
+        $("#changePassBtn").click(function (event) {
+            var txtPwd = $("#password").val();
+            var txtconfirm = $.trim($("#confirmpwd").val());
+            if ($.trim(txtPwd) == "") {
+
+                Tips('请输入你要设置的密码！');
+                $("#txtPwd").focus();
+                return;
+
+            }
+            var reg = /^[\w]{6,12}$/;
+            if(!reg.exec(txtPwd)){
+                Tips('密码长度为6-16位！');
+                $("#txtPwd").focus();
+                return;
+            }
+            if($.trim(txtconfirm) == "") {
+
+                Tips('请再次输入密码！');
+                $("#txtconfirm").focus();
+                return;
+
+            }
+            if( $.trim(txtconfirm) != $.trim(txtPwd) ) {
+
+                Tips('你输入的密码不匹配，请从新输入！');
+                $("#txtconfirm").focus();
+                return;
+
+            }
+
+            //如果符合规范，那么就进行数据库插入操作
+            $.ajax({
+                type : "POST",
+                url : "/user/updateOneRow",
+                data : {"password":txtPwd},
+                success : function (data) {
+                    if(data.message == "修改失败！")
+                    {
+                        Tips(data.message());
+                        $("#password").focus();
+                        return;
+                    }
+                }
+            });
+
+            var yes=step.nextStep();
+
+
+            $(function () {
+                setTimeout(lazyGo, 1000);
+            });
+
+            function lazyGo() {
+                var sec = $("#sec").text();
+                $("#sec").text(--sec);
+                if (sec > 0)
+                    setTimeout(lazyGo, 1000);
+                else
+                    window.location.href = "login.html";
+            }
+
+
+        });
+
+
+
 		$("#submitBtn").click(function(event) {
 			   var txtconfirm = $.trim($("#confirmpwd").val());
 	           var txtPwd = $("#password").val();

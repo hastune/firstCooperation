@@ -11,10 +11,14 @@ if(screen.width < 780 && $(window).width() < 780)
 	 $(".content_list").show();
 	 });
 });
+
+
+
+
 //登录操作
 var email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 var validCode=true;
-function cliLogin() {
+cliLogin = function () {
 	var txtUser = $.trim($("#email").val());
 	var txtPwd = $("#password").val();
 	
@@ -56,13 +60,11 @@ function cliLogin() {
                 return;
             }else{
                 //登录成功
-                window.location.href = "http://www.baidu.com";
+                window.location.href = data.message;
+				// console.info(data);
             }
         }
     });
-
-
-
 
 
 	return false;
@@ -95,7 +97,7 @@ function ForgotSendpwd(sender){
             type : "get",
             success : function (data) {
 
-                /*if(data.message == "邮箱已存在，请重新输入！") {
+                if(data.message == "用户不存在，请重新输入！") {
                     Tip(data.message);
                     $("#email").focus();
                     validCode=true;
@@ -110,7 +112,7 @@ function ForgotSendpwd(sender){
                     validCode=true;
                     code.removeClass("msgs1").attr("disabled",false);
 
-                }*/
+                }
             }
 
 
