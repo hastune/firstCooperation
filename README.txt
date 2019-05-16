@@ -16,7 +16,6 @@
 	 Druid			阿里数据库
 	 springboot		分布式
 	 redis			nosql
-	 shiro			安全
 	fileupload		文件上传下载
 ---	
 以下用来进行项目进度的记录 功能的添加和删除均记录在下面，完成的功能在后面打钩(√)
