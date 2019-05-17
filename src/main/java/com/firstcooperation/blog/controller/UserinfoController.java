@@ -34,6 +34,7 @@ public class UserinfoController {
      * @param userid
      * @return
      */
+    @RequestMapping("/getUserInfo")
     public Response getUserInfo(String userid){
         Response response = new Response();
         response.setData(userinfoService.selectById(userid));
@@ -46,6 +47,7 @@ public class UserinfoController {
      * @param userinfo
      * @return
      */
+    @RequestMapping("/updateUserInfo")
     public Response updateUserInfo(Userinfo userinfo){
         Response response = new Response();
         if(!userinfoService.updateById(userinfo)){
@@ -62,8 +64,8 @@ public class UserinfoController {
      * @param httpSession
      * @return
      */
-    @RequestMapping("/imgFileUpload")
-    public Response imgUload(MultipartFile file, String source, HttpSession httpSession){
+    @RequestMapping("/imgUpload")
+    public Response imgUpload(MultipartFile file, String source, HttpSession httpSession){
         Response response = new Response();
         //获得源文件名 包括名字+后缀
         //file.getOriginalFilename();

@@ -1,0 +1,76 @@
+<div class="col-sm-4 sidebar">
+    <div class="widget">
+        <h3 class="widget-title">关于我</h3>
+        <div class="bubble-line"></div>
+
+        <div class="widget-content">
+            <img src="images/widget/about.jpg" alt="not image">
+            <p>这个人懒死了，什么都没有写</p>
+            <div class="widget-more">
+                <a href="javascript:;" class="button">深♂入♂了♂解</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="widget">
+        <h3 class="widget-title"> <a href="javascript:;">XX的标签</a></h3>
+        <div class="bubble-line"></div>
+        <div class="widget-content">
+            <div class="widget-tags">
+                <a href="javascript:;">clean</a>
+                <a href="javascript:;">minimal</a>
+                <a href="javascript:;">cloudy</a>
+                <a href="javascript:;">video</a>
+                <a href="javascript:;">template</a>
+                <a href="javascript:;">fashion</a>
+                <a href="javascript:;">bloggers</a>
+                <a href="javascript:;">carefully</a>
+                <a href="javascript:;">handcrafted</a>
+                <a href="javascript:;">print</a>
+                <a href="javascript:;">psd</a>
+                <a href="javascript:;">music</a>
+                <a href="javascript:;">food recipe</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="widget-sub social">
+        <ul>
+            <li>
+                <a class="social-widget" href="javascript:;"> <i class="fa fa-qq"> </i><span>qq</span></a>
+                <div> 211</div>
+            </li>
+            <li>
+                <a class="social-widget" href="javascript:;"> <i class="fa fa-wechat"></i> <span>微信</span></a>
+                <div> 121</div>
+            </li>
+            <li>
+                <a class="social-widget" href="javascript:;"> <i class="fa fa-phone"></i> <span>电话</span></a>
+                <div> 11</div>
+            </li>
+            <li>
+                <a class="social-widget" href="javascript:;"> <i class="fa fa-weibo"></i> <span>微博</span></a>
+                <div>65</div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<script>
+    /**
+     * 页面初始化
+     */
+    $(function() {
+        getUserInfo();
+    });
+
+    /**
+     * 查询用户个人信息
+     */
+    function getUserInfo(){
+        var userid = getUrlParam("id");
+        $.get("userinfo/getUserInfo",{userid:userid},function (resp) {
+            console.info(resp);
+        });
+    }
+</script>

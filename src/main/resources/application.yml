@@ -61,11 +61,11 @@ spring:
   #配置redis的相关参数
   redis:
     #主机地址
-    host: localhost
+    host: 120.79.152.48
     #端口号
     port: 6379
     #redis连接密码，（默认为空）
-    password:
+    password: root
     #连接池最大连接数
     jedis:
       pool:
