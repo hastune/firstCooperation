@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
-import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -61,9 +60,9 @@ public class UserController {
             //登录成功
             //信息保存到session中
             httpSession.setAttribute("user",user);
-           /* //创建userinfo表数据 默认为空
-            this.userinfoService.insert(new Userinfo());*/
-           response.setMessage("index.html");
+            //创建userinfo表数据 默认为空
+            this.userinfoService.insert(new Userinfo());
+           response.setMessage("index.html?id="+user.getUserId());
         }else{
             response.setMessage("邮箱或密码错误")
                     .setCode(StatusCode.Fail_Code);
