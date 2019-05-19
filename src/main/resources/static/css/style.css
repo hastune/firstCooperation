@@ -144,7 +144,7 @@ header .menu-container {
 
 header nav.main-nav {
   font-family: 'Montserrat';
-  font-size: 12px;
+  font-size: 14px;
   font-weight: normal;
   text-align: left;
   float: left;
@@ -253,30 +253,42 @@ header #close-menu {
   outline: none;
 }
 
-.h-search .head-social {
+.h-search .head-top {
   float: right;
   margin-right: 30px;
 }
 
-.h-search .head-social .socials {
+.h-search .head-top .socials {
   color: #444444;
   font-size: 14px;
   line-height: 90px;
 }
 
-.h-search .head-social .socials + .socials {
+
+
+.h-search .head-top .socials + .socials {
   margin-left: 10px;
 }
 
 .h-search .search_form {
-  margin: 0;
+  margin-left: 20px;
   font-family: 'Montserrat';
   font-weight: 300;
   font-style: italic;
   font-size: 11px;
-  float: right;
   line-height: 90px;
+  width:180px;
 }
+
+
+#example-navbar-collapse{
+  margin-top:18px;
+  margin-left:30px;
+  float:right;
+}
+
+
+
 /* Content
 ====================================*/
 
@@ -3610,4 +3622,5 @@ article.content-item .post-footer .content-social.grid a + a {
   footer#footer .widget.widget-subscribe-form .widget-title {
     float: none !important;
   }
+
 }
