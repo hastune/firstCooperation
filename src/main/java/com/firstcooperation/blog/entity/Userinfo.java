@@ -1,5 +1,6 @@
 package com.firstcooperation.blog.entity;
 
+import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import lombok.experimental.Accessors;
  * 
  *
  * @author kevin
- * @since 2019-05-08
+ * @since 2019-05-20
  */
 @Data
 @Accessors(chain = true)
@@ -21,8 +22,8 @@ public class Userinfo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     // 用户的id
-    @TableId("user_id")
-	private String userId;
+	@TableId(value = "user_id", type = IdType.AUTO)
+	private Integer userId;
     // 用户的头像图像地址
 	@TableField("head_img")
 	private String headImg;

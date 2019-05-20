@@ -19,7 +19,7 @@ public class getSessionData {
         return (User) httpSession.getAttribute(key);
     }
 
-    public String getUserId(HttpSession httpSession){
+    public Integer getUserId(HttpSession httpSession){
         return getUserValue(httpSession).getUserId();
     }
 }
