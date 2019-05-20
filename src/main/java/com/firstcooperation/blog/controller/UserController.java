@@ -62,7 +62,7 @@ public class UserController {
             httpSession.setAttribute("user",user);
             //创建userinfo表数据 默认为空
             this.userinfoService.insert(new Userinfo());
-           response.setMessage("index.html?id="+user.getUserId());
+           response.setMessage("homePage.html?id="+user.getUserId());
         }else{
             response.setMessage("邮箱或密码错误")
                     .setCode(StatusCode.Fail_Code);

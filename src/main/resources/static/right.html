@@ -57,9 +57,7 @@
 
 </div>
 <script>
-    /**
-     * 页面初始化
-     */
+    //页面初始化
     $(function() {
         getUserInfo();
     });
@@ -71,6 +69,8 @@
         var userid = getUrlParam("id");
         $.get("userinfo/getUserInfo",{userid:userid},function (resp) {
             console.info(resp);
+            //添加到页面中
+
         });
     }
 </script>

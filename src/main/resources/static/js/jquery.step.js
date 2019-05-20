@@ -101,7 +101,7 @@
                 if (sec > 0)
                     setTimeout(lazyGo, 1000);
                 else
-                    window.location.href = "login.html";
+                    window.location.href = "index.html";
             }
 
 
@@ -171,7 +171,7 @@
                     if (sec > 0)
                         setTimeout(lazyGo, 1000);
                     else
-                        window.location.href = "login.html";
+                        window.location.href = "index.html";
                 }
 
 
