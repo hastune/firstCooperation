@@ -41,8 +41,6 @@ cliLogin = function () {
 		$("#Userpwd").focus();
 		return;
 	}
-
-
 	//完成登录操作
     $.ajax({
        url : "/user/selectOne" ,
@@ -53,8 +51,8 @@ cliLogin = function () {
        },
        dataType : "json",
         success : function (data) {
-            if(data.message == "邮箱或密码错误"){
-                //説明账号或密码输入错误
+            if(data.code == "Fail_Code"){
+                //说明账号或密码输入错误
                 Tip(data.message);
                 $("#email").focus();
                 return;
@@ -65,10 +63,24 @@ cliLogin = function () {
             }
         }
     });
-
-
 	return false;
 }
+var id;
+//每一秒减1
+function s(code){
+	var time =60;
+
+	id = setInterval(function(){
+		time--;
+		code.val("重新获取("+time+")");
+		if(time == 0){
+			clearInterval(id);
+			code.removeClass("msgs1").attr("disabled",false);
+			code.val("重新获取");
+		}
+	},1000);
+}
+
 
 //忘记密码操作
 function ForgotSendpwd(sender){
@@ -88,34 +100,30 @@ function ForgotSendpwd(sender){
         return;
     }
 
+    //这里是忘记密码操作
     if (validCode ){
         validCode = false;
         code.addClass("msgs1").attr("disabled",true);
+		s(code);
         //在这里发送ajax请求
         $.ajax({
             url : "/user/getUserByEmail?email="+emails,
             type : "get",
             success : function (data) {
 
-                if(data.message == "用户不存在，请重新输入！") {
+                if(data.code == "VerifyCode_Send_Fail") {
                     Tip(data.message);
                     $("#email").focus();
                     validCode=true;
+                    clearInterval(id);
+					code.val("重新获取");
                     code.removeClass("msgs1").attr("disabled",false);
                     return;
 
                 }else{
-                    //如果输入正确，我们就发送请求
-
-                    code.val("重新获取");
-
-                    validCode=true;
-                    code.removeClass("msgs1").attr("disabled",false);
 
                 }
             }
-
-
         });
     }
 
@@ -145,50 +153,29 @@ function Sendpwd(sender) {
 	if (validCode ){
 		validCode = false;
         code.addClass("msgs1").attr("disabled",true);
-		var id = s(code);
+		s(code);
 		//在这里发送ajax请求
 		$.ajax({
 			url : "/user/getCheckCode?email="+emails,
 			type : "get",
 			success : function (data) {
 
-				if(data.message == "邮箱已存在，请重新输入！") {
+				if(data.code == "VerifyCode_Send_Fail") {
 					Tip(data.message);
 					$("#email").focus();
                     validCode=true;
+                    clearInterval(id);
+                    code.val("重新获取");
                     code.removeClass("msgs1").attr("disabled",false);
-					clearInterval(id);
 					return;
-
 				}else{
-					//如果输入正确，我们就发送请求
-
-					// code.val("重新获取");
-					//
-					// validCode=true;
-					// code.removeClass("msgs1").attr("disabled",false);
-					// s(code);
 
 					}
 				}
 		});
 	}
 }
-//每一秒减1
-function s(code){
-	var time =60;
-	var id;
-	id = setInterval(function(){
-		time--;
-		code.val("重新获取("+time+")");
-		if(time == 0){
-			clearInterval(id);
-			code.removeClass("msgs1").attr("disabled",false);
-			code.val("重新获取");
-		}
-	},1000);
-	return id;
-}
+
 
 function Tip(msg) {
 	$(".tishi").show().html("<div class='prompt'><i class='tishi_icon'></i>"+msg+"</div>");

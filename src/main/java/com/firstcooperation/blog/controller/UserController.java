@@ -12,6 +12,7 @@ import com.firstcooperation.blog.utils.Response;
 import com.firstcooperation.blog.utils.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -54,8 +55,8 @@ public class UserController {
     @RequestMapping("selectOne")
     public Response selectOne(String emailOrName, String password, HttpSession httpSession){
         Response response = new Response();
-        System.out.println(emailOrName);
-        System.out.println(password);
+//        System.out.println(emailOrName);
+//        System.out.println(password);
         //查询用户
         User user =this.userService.selectByNameOrEmail(emailOrName,password);
         if(user != null){
@@ -64,7 +65,7 @@ public class UserController {
             httpSession.setAttribute("user",user);
            response.setMessage("homePage.html?id="+user.getUserId());
         }else{
-            response.setMessage("邮箱或密码错误")
+            response.setMessage("用户名或密码错误")
                     .setCode(StatusCode.Fail_Code);
         }
         return response;
@@ -76,7 +77,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("insertOneRow")
-    public Response insertOneRow(User user){
+    public Response insertOneRow(@RequestBody User user){
         Response response = new Response();
         //将email封装进user
         String email = redisTemplate.opsForValue().get("email");
@@ -131,7 +132,8 @@ public class UserController {
     }
 
     /**
-     * email是前台获得的参数，进行邮箱注册，得到校验码
+     * email是前台获得的参数
+     * 这里进行的是修改密码的操作，与上面的注册用户不同
      * @param email
      * @return
      */
@@ -142,7 +144,6 @@ public class UserController {
         if(user != null) {
             //前台已经传来了email
             //生成6位数
-
             sendEmail(emailService,email,redisTemplate,response);
         }
         else {
@@ -186,7 +187,6 @@ public class UserController {
         EntityWrapper<User> ew = new EntityWrapper<>();
         //取出user
         User user = userService.selectOne(ew.eq("email",email));
-
 
         //对password进行加密
         //实现MD5加密

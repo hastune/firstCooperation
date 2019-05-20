@@ -79,7 +79,7 @@
                 url : "/user/updateOneRow",
                 data : {"password":txtPwd},
                 success : function (data) {
-                    if(data.message == "修改失败！")
+                    if(data.code == "Fail_Code")
                     {
                         Tips(data.message());
                         $("#password").focus();
