@@ -10,10 +10,10 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 
+ * 关注表
  *
  * @author kevin
- * @since 2019-05-08
+ * @since 2019-05-20
  */
 @Data
 @Accessors(chain = true)
@@ -23,10 +23,10 @@ public class Follow implements Serializable {
 
     // 追随者的id == user_id
     @TableId("follow_id")
-	private String followId;
+	private Integer followId;
     // 被追随者的id
 	@TableField("follows_id")
-	private String followsId;
+	private Integer followsId;
     // 点击追随时的时间
 	@TableField("follow_time")
 	private Date followTime;

@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
  * 
  *
  * @author kevin
- * @since 2019-05-08
+ * @since 2019-05-20
  */
 @Data
 @Accessors(chain = true)
@@ -22,13 +22,13 @@ public class Message implements Serializable {
 
     // 留言者id
 	@TableField("message_id")
-	private String messageId;
+	private Integer messageId;
     // 博主id
 	@TableField("user_id")
-	private String userId;
+	private Integer userId;
     // 评论文章的id
 	@TableField("article_id")
-	private String articleId;
+	private Integer articleId;
     // 评论的内容
 	private String message;
     // 评论的时间
