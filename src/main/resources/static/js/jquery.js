@@ -145,7 +145,7 @@ function Sendpwd(sender) {
 	if (validCode ){
 		validCode = false;
         code.addClass("msgs1").attr("disabled",true);
-		s(code);
+		var id = s(code);
 		//在这里发送ajax请求
 		$.ajax({
 			url : "/user/getCheckCode?email="+emails,
@@ -157,6 +157,7 @@ function Sendpwd(sender) {
 					$("#email").focus();
                     validCode=true;
                     code.removeClass("msgs1").attr("disabled",false);
+					clearInterval(id);
 					return;
 
 				}else{
@@ -179,13 +180,14 @@ function s(code){
 	var id;
 	id = setInterval(function(){
 		time--;
-		code.val(time+"秒后重新获取");
+		code.val("重新获取("+time+")");
 		if(time == 0){
 			clearInterval(id);
 			code.removeClass("msgs1").attr("disabled",false);
 			code.val("重新获取");
 		}
 	},1000);
+	return id;
 }
 
 function Tip(msg) {
