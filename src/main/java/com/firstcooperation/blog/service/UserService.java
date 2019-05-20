@@ -11,5 +11,5 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface UserService extends IService<User> {
 
-
+    User selectByNameOrEmail(String nameOrEmail,String password);
 }

@@ -48,7 +48,7 @@ cliLogin = function () {
        url : "/user/selectOne" ,
        type : "POST",
        data : {
-           email : txtUser,
+		   emailOrName : txtUser,
            password : txtPwd
        },
        dataType : "json",
@@ -145,6 +145,7 @@ function Sendpwd(sender) {
 	if (validCode ){
 		validCode = false;
         code.addClass("msgs1").attr("disabled",true);
+		s(code);
 		//在这里发送ajax请求
 		$.ajax({
 			url : "/user/getCheckCode?email="+emails,
@@ -165,7 +166,7 @@ function Sendpwd(sender) {
 					//
 					// validCode=true;
 					// code.removeClass("msgs1").attr("disabled",false);
-					s(code);
+					// s(code);
 
 					}
 				}

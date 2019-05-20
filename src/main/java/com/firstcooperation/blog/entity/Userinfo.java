@@ -31,7 +31,7 @@ public class Userinfo implements Serializable {
 	private String about;
     // 用户的地址
 	private String address;
-    // 用户的性别：0为男 1为女
+    // 用户的性别：1为男 0为女
 	private Integer sex;
     // 用户的个人爱好
 	private String hobby;

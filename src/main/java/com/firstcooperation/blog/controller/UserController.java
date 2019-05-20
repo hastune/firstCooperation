@@ -46,24 +46,22 @@ public class UserController {
 
     /**
      * 用户登录
-     * @param email
+     * @param emailOrName
      * @param password
      * @param httpSession
      * @return
      */
     @RequestMapping("selectOne")
-    public Response selectOne(String email, String password, HttpSession httpSession){
+    public Response selectOne(String emailOrName, String password, HttpSession httpSession){
         Response response = new Response();
-
-        //把输入密码进行加密与数据库进行比对
-        String mdPass = MD5Util.encode(password);
-        User user =this.userService.selectOne(new EntityWrapper<User>().eq("email",email).and().eq("password",mdPass));
+        System.out.println(emailOrName);
+        System.out.println(password);
+        //查询用户
+        User user =this.userService.selectByNameOrEmail(emailOrName,password);
         if(user != null){
             //登录成功
             //信息保存到session中
             httpSession.setAttribute("user",user);
-            //创建userinfo表数据 默认为空
-            this.userinfoService.insert(new Userinfo());
            response.setMessage("homePage.html?id="+user.getUserId());
         }else{
             response.setMessage("邮箱或密码错误")
@@ -93,6 +91,20 @@ public class UserController {
             response.setMessage("未知问题请联系管理员")
                     .setCode(StatusCode.Fail_Code);
         }
+        //创建userinfo表数据 默认为空
+        Userinfo userinfo = new Userinfo();
+        userinfo.setUserId(user.getUserId())
+                .setHeadImg("")
+                .setAbout("")
+                .setAddress("")
+                .setHobby("")
+                .setPhone("")
+                .setQq("")
+                .setSex(1)
+                .setWechat("")
+                .setWeibo("");
+        System.err.println(userinfo.getUserId());
+        this.userinfoService.insert(userinfo);
         return response;
     }
 
