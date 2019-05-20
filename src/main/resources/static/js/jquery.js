@@ -29,12 +29,12 @@ cliLogin = function () {
 		return;
 		
 	}
-	if(!email.exec(txtUser)){
-			
-			Tip('邮箱格式不正确,请重新输入');
-			$("#txtUser").focus();
-		return;
-		}
+	// if(!email.exec(txtUser)){
+	//
+	// 		Tip('邮箱格式不正确,请重新输入');
+	// 		$("#txtUser").focus();
+	// 	return;
+	// 	}
 	
 	if ($.trim(txtPwd) == "") {
 		Tip('请输入密码！');

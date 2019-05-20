@@ -7,6 +7,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class EmailServiceImpl implements EmailService {
 
@@ -27,7 +29,11 @@ public class EmailServiceImpl implements EmailService {
         message.setTo(to);
         message.setSubject(title);
         message.setText(content);
-
+        message.setSentDate(new Date());
+        //抄送
+        //message.setCc()
+        //密送
+        //message.setBcc();
         mailSender.send(message);
     }
 }
