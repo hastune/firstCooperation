@@ -161,20 +161,30 @@ function Sendpwd(sender) {
 				}else{
 					//如果输入正确，我们就发送请求
 
-					code.val("重新获取");
-
-					validCode=true;
-					code.removeClass("msgs1").attr("disabled",false);
+					// code.val("重新获取");
+					//
+					// validCode=true;
+					// code.removeClass("msgs1").attr("disabled",false);
+					s(code);
 
 					}
 				}
-
-
 		});
 	}
-
-
-
+}
+//每一秒减1
+function s(code){
+	var time =60;
+	var id;
+	id = setInterval(function(){
+		time--;
+		code.val(time+"秒后重新获取");
+		if(time == 0){
+			clearInterval(id);
+			code.removeClass("msgs1").attr("disabled",false);
+			code.val("重新获取");
+		}
+	},1000);
 }
 
 function Tip(msg) {

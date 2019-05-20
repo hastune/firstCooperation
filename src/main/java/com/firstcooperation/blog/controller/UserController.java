@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -82,11 +84,10 @@ public class UserController {
         String email = redisTemplate.opsForValue().get("email");
         user.setEmail(email);
         //实现MD5加密
-       String password =  MD5Util.encode(user.getPassword());
-
-
-       user.setPassword(password);
-
+        String password =  MD5Util.encode(user.getPassword());
+        user.setPassword(password);
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd : hh-mm-ss");
+        user.setCreateTime(new Date());
         if(!this.userService.insert(user)){
             //注册失败
             response.setMessage("未知问题请联系管理员")
@@ -105,8 +106,7 @@ public class UserController {
         Response response = new Response();
         User user = userService.selectOne(new EntityWrapper<User>().eq("email",email));
         if(user == null) {
-            //前台已经传来了email
-            //生成6位数
+            //发送注册邮件
             sendEmail(emailService,email,redisTemplate,response);
         }
         else {
