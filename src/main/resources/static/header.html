@@ -1,0 +1,72 @@
+<div class="row">
+    <div  class="col-md-6">
+        <nav class="main-nav">
+            <ul>
+                <li class=" current-menu-item menu-item-has-children">
+                    <a href="homePage.html" class="home">首页</a>
+                </li>
+                <li><a href="grid.html" class="java">JAVA开发</a></li>
+                <li><a href="fullwidth.html" class="js">JS技术</a></li>
+                <li><a href="single.html" class="linux">Linux</a></li>
+                <li><a href="about.html" class="aboutOurs">关于我们</a></li>
+                <li><a href="contacts.html" class="callMe">联系我们</a></li>
+            </ul>
+            <a href="javascript:;" id="close-menu"> <i class="fa fa-close"></i></a>
+        </nav>
+    </div>
+    <div class=" col-md-6 h-search">
+        <div class=" col-md-3">
+            <form class="search_form">
+                <input type="text" name="2" placeholder="搜索">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- 用户的汉堡键 -->
+        <!-- <div class="head-top">
+             &lt;!&ndash; 写博客 &ndash;&gt;
+             <a class="socials" href="#"><i class="fa fa-edit">写博客</i></a>
+             &lt;!&ndash; 消息中心 &ndash;&gt;
+             <a class="socials" href="#"><i class="fa fa-commenting">消息中心</i></a>
+             &lt;!&ndash; 用户基础头像（圆饼）,旁边加个下拉框<img src="images/baseImg.jpg" style="width:25px;height:25px;"> &ndash;&gt;
+             <a class="socials" href="#">
+                 <i class="dropdown">
+                     <a
+                 </i>
+             </a>
+
+         </div>-->
+
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#"><i class="fa fa-edit">写博客</i></a></li>
+                <li><a href="#"><i class="fa fa-commenting">消息中心</i></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="images/baseImg.jpg" style="width:25px;height:25px;"> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">我的关注</a></li>
+                        <li><a href="#">个人中心</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">我的博客</a></li>
+                        <li><a href="#">管理博客</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">帮助</a></li>
+                        <li><a href="#">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    var param = location.search.split("&")[0];
+    $(".home").attr("href",$(".home").attr("href")+param);
+    $(".java").attr("href",$(".java").attr("href")+param);
+    $(".js").attr("href",$(".js").attr("href")+param);
+    $(".linux").attr("href",$(".linux").attr("href")+param);
+    $(".aboutOurs").attr("href",$(".aboutOurs").attr("href")+param);
+    $(".callMe").attr("href",$(".callMe").attr("href")+param);
+
+
+</script>
