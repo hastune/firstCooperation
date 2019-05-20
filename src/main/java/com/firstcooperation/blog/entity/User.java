@@ -33,6 +33,7 @@ public class User implements Serializable {
     // 用户密码
 	private String password;
     // 注册日期
+	@TableId(value = "create_time", type = IdType.AUTO)
 	private Date createTime;
 
 
