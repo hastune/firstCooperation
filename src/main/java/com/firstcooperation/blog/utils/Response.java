@@ -7,14 +7,14 @@ package com.firstcooperation.blog.utils;
 public class Response {
 
     // 状态码
-    protected StatusCode code;
+    protected Integer code;
     // 状态信息
     protected String message;
     // 返回数据
     protected Object data;
 
     public Response(){
-        this.code = StatusCode.Success;
+        this.code = StatusCode.Success.getValue();
         this.message = "操作成功";
     }
 
@@ -37,11 +37,11 @@ public class Response {
     }
 
     public Response setCode(StatusCode statusCode){
-        this.code = statusCode;
+        this.code = statusCode.getValue();
         return this;
     }
 
-    public StatusCode getCode(){
+    public Integer getCode(){
         return code;
     }
 }
